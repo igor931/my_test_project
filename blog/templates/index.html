@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<ul>
+			
+			<li><a href="{% url 'news_feed' %}">Лента новостей</a></li>
+			<li><a href="{% url 'post_add' %}">Добавить новый пост</a></li>
+			
+		</ul>
+	{% endif %}
+	
+	<div style="border: 1px bold black; padding: 10px;">
+		
+	{% for blog in object_list %}
+		<div style="padding: 10px;">
+		{% if blog.author == request.user %}
+			<h2><a href="{% url 'blog' username=blog.author.username %}">Личный блог</a></h2>
+		
+		{% else %}
+			<p><a href="{% url 'blog' username=blog.author.username %}"> Блог: {{ blog.author.username }}</a></p>
+		{% endif %}
+		</div>
+	{% endfor %}
+	</div>	
+{% endblock %}

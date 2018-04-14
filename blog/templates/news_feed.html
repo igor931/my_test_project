@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+	<div style="padding: 10px; margin-left: 10px;">
+
+	<h1>Блог:</h1>
+		{% for post in post_list %}
+		<div>
+			 <h1>{{ post.author }} - {{ post.date }}</h1>
+			 <h1>{{ post.title }} : 
+			 	{% if post in is_reading %}
+			 		Прочитано
+			 	{% else %}
+			 		<a href="{% url 'readed' post_id=post.pk %}">Прочитать</a>
+			 	{% endif %}
+			 </h1>
+			 <p>{{ post.text }}</p>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

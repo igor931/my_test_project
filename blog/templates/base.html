@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+	<div id="header">
+		<span class="logo">СпанСайт</span>
+			{% if request.user.is_authenticated %}
+ 	<ul class="menu">
+ 		<li>
+ 			<a href="/blog/">Главная</a>
+ 		</li>
+ 			
+ 	</ul>
+			{% endif %}
+ 	<span class="user">
+ 		{% if request.user.is_authenticated %}
+ 			Привет {{ request.user.username }},
+ 			<a href="{% url 'logout' %}">Выйти</a>
+ 		{% else %}
+ 			<a href="{% url 'login' %}">Войти</a>
+ 		{% endif %}
+ 	</span>
+	</div>
+	{% if not request.user.is_authenticated %}
+		<h2>Войдите на сайт чтобы просматривать блоги участников.</h2>
+	{% endif %}
+	<div id="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+</html>
