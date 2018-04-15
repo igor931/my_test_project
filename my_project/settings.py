@@ -107,7 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "agent53347@mail.ru"
+<<<<<<< HEAD
 EMAIL_HOST_PASSWORD = "**************"
+=======
+EMAIL_HOST_PASSWORD = "*********"
+>>>>>>> aed3a57e4efdcdd708f01872440371f446dfd542
 EMAIL_USE_TLS = True
 
 SERVER_EMAIL = EMAIL_HOST_USER
