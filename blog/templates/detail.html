@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+	<div style="padding: 10px; margin-left: 10px;">
+
+		<div> 
+			 <h1>{{ post.author }}</h1>
+			 <p>Перейдите в блог если желаете подписаться: <a href="{% url 'blog' username=post.author.username %}">Перейти</a></p>
+			 <h1>{{ post.title }} - {{ post.date }}</h1>
+			 <p>{{ post.text }}</p>
+		</div>
+		 
+	</div>
+{% endblock %}

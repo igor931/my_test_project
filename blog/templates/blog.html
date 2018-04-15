@@ -12,13 +12,15 @@
 			<a href="{% url 'unsubs' username=username %}">Отписка</a>
 		{% endif%}
 
-	<h1>Блог:</h1>
+	<h1 align="center">Блог:</h1>
+	<br><br>
 		{% for post in posts %}
 		<div>
-			 <h1>{{ post.author }}</h1>
-			 <h1>{{ post.title }} - {{ post.date }}</h1>
+			 <h1>{{ post.author }}: </h1>
+			 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> - {{ post.date }}</h1>
 			 <p>{{ post.text }}</p>
 		</div>
+		<br><br>
 		{% endfor %}
 	</div>
 {% endblock %}

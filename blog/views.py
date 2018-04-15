@@ -73,12 +73,14 @@ class post_add(FormView):
 		author = request.user
 		title = request.POST.get('title', '')
 		text = request.POST.get('text', '')
-		post = Post(author=author, text=text)
+		post = Post(author=author, text=text, title=title)
 		post.save()
-		return redirect('/')
+		return redirect('/blog/' + str(request.user.username) + '/')
 
 	def get(self, request):
 		template_name = 'post_add.html'
 		form = PostForm
 		context = {'form': form}
 		return render(request, template_name, context)
+
+

@@ -7,7 +7,7 @@
 	<h1>Добавить пост(Log-in)</h1>
 	<p>Пожалуйста, используйте форму ниже.
 	<div class="post_add" >
-		<form action="/blog/" method="post">
+		<form action="{% url 'post_add' %}" method="post">
 			{{ form.as_p }}
 			{% csrf_token %}
 			<input type="hidden" name="next" value="{{next}}">

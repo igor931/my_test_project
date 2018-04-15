@@ -12,7 +12,7 @@
 	<p>Пожалуйста, используйте форму ниже.
 {% endif %}
 
-	<div class="login">
+<!--	<div>
 		<form action="{% url 'login' %}" method="post">
 			{{ form.as_p }}
 			{% csrf_token %}
@@ -20,5 +20,10 @@
 			<p><input type="submit" value="Войти"></p>
 		</form>
  	</div>
-
+-->
+<form action="." method="post">
+		{{ form.as_p}}
+		{% csrf_token %}
+		<p><input type="submit" value="Войти"></p>
+	</form>
 {% endblock %}

@@ -16,7 +16,7 @@ class Post(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		url = reverse('ViewPost', args=[self.author.username,
+		url = reverse('post', args=[self.author.username,
 										self.pk])
 		return url
 
@@ -28,7 +28,7 @@ class Post(models.Model):
 		for user in users:
 			if user.email:
 				data = ('Здравствуйте в блоге на который вы подписаны был опубликован пост: ', \
-					self.title + '' + self.text + ' ' + 'Ссылка - url_posts', \
+					self.title + '\n' + self.text + '\n' + self.get_absolute_url, \
 					'agent53347@mail.ru', [user.email])
 				datalist.append(data)
 			send_mass_mail(tuple(datalist))
